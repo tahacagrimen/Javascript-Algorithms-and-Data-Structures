@@ -1,15 +1,27 @@
-# Sum All Numbers in a Range
+# Everything Be True
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Check if the predicate (second argument) is truthy on all elements of a collection (first argument).
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+In other words, you are given an array collection of objects. The predicate pre will be an object property and you need to return true if its value is truthy. Otherwise, return false.
+
+In JavaScript, truthy values are values that translate to true when evaluated in a Boolean context.
+
+Remember, you can access object properties through either dot notation or [] notation.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function truthCheck(collection, pre) {
+  collection = collection.every((item) => Boolean(item[pre]) == true);
+  return collection;
 }
-sumAll([1, 4]);
+
+truthCheck(
+  [
+    { name: "Quincy", role: "Founder", isBot: false },
+    { name: "Naomi", role: "", isBot: false },
+    { name: "Camperbot", role: "Bot", isBot: true },
+  ],
+  "isBot"
+);
 ```

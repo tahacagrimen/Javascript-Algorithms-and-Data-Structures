@@ -1,15 +1,28 @@
-# Sum All Numbers in a Range
+# Drop it
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Given the array arr, iterate through and remove each element starting from the first element (the 0 index) until the function func returns true when the iterated element is passed through it.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+Then return the rest of the array once the condition is satisfied, otherwise, arr should be returned as an empty array.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function dropElements(arr, func) {
+  let indexArr = [];
+  let newArr = [];
+
+  indexArr = arr.filter((item) => func(item));
+
+  newArr = arr.slice(arr.indexOf(indexArr[0]), arr.length);
+
+  if (newArr.filter((item) => func(item)).length > 0) {
+    return newArr;
+  } else {
+    return [];
+  }
 }
-sumAll([1, 4]);
+
+dropElements([1, 2, 3, 4], function (n) {
+  return n > 5;
+});
 ```

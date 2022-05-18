@@ -1,15 +1,19 @@
-# Sum All Numbers in a Range
+# Seek and Destroy
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+You will be provided with an initial array (the first argument in the destroyer function), followed by one or more arguments. Remove all elements from the initial array that are of the same value as these arguments.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+Note: You have to use the arguments object.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function destroyer(arr) {
+  let newArr = arguments[0];
+  for (let i = 1; i < arguments.length; i++) {
+    newArr = newArr.filter((item) => item != arguments[i]);
+  }
+  return newArr;
 }
-sumAll([1, 4]);
+
+destroyer([1, 2, 3, 1, 2, 3], 2, 3);
 ```

@@ -1,15 +1,11 @@
-# Sum All Numbers in a Range
+# Sum All Primes
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+A prime number is a whole number greater than 1 with exactly two divisors: 1 and itself. For example, 2 is a prime number because it is only divisible by 1 and 2. In contrast, 4 is not prime since it is divisible by 1, 2 and 4.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+Rewrite sumPrimes so it returns the sum of all prime numbers that are less than or equal to num.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
-}
-sumAll([1, 4]);
+
 ```

@@ -1,15 +1,29 @@
-# Sum All Numbers in a Range
+# Sorted Union
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Write a function that takes two or more arrays and returns a new array of unique values in the order of the original provided arrays.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+In other words, all values present from all arrays should be included in their original order, but with no duplicates in the final array.
+
+The unique numbers should be sorted by their original order, but the final array should not be sorted in numerical order.
+
+Check the assertion tests for examples.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function uniteUnique(arr) {
+  let newArr = [];
+  for (let i = 0; i < arguments.length; i++) {
+    arr.push(...arguments[i]);
+  }
+  arr.filter((item) => {
+    if (newArr.indexOf(item) == -1) {
+      newArr.push(item);
+    }
+  });
+
+  return newArr;
 }
-sumAll([1, 4]);
+
+uniteUnique([1, 3, 2], [5, 2, 1, 4], [2, 1]);
 ```

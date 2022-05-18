@@ -1,15 +1,17 @@
-# Sum All Numbers in a Range
+# Map the Debris
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Return a new array that transforms the elements' average altitude into their orbital periods (in seconds).
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+The array will contain objects in the format {name: 'name', avgAlt: avgAlt}.
+
+You can read about orbital periods on Wikipedia.
+
+The values should be rounded to the nearest whole number. The body being orbited is Earth.
+
+The radius of the earth is 6367.4447 kilometers, and the GM value of earth is 398600.4418 km3s-2.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
-}
-sumAll([1, 4]);
+
 ```

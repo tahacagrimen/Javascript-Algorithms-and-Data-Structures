@@ -1,15 +1,38 @@
-# Sum All Numbers in a Range
+# DNA Pairing
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+The DNA strand is missing the pairing element. Take each character, get its pair, and return the results as a 2d array.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+Base pairs are a pair of AT and CG. Match the missing element to the provided character.
+
+Return the provided character as the first element in each array.
+
+For example, for the input GCG, return [["G", "C"], ["C","G"], ["G", "C"]]
+
+The character and its pair are paired up in an array, and all the arrays are grouped into one encapsulating array.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function pairElement(str) {
+  str = str.split("");
+  let arr = [];
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] == "G") {
+      str[i] = str[i] + "C";
+      str[i] = str[i].split("");
+    } else if (str[i] == "C") {
+      str[i] = str[i] + "G";
+      str[i] = str[i].split("");
+    } else if (str[i] == "A") {
+      str[i] = str[i] + "T";
+      str[i] = str[i].split("");
+    } else if (str[i] == "T") {
+      str[i] = str[i] + "A";
+      str[i] = str[i].split("");
+    }
+  }
+  return str;
 }
-sumAll([1, 4]);
+
+pairElement("GCG");
 ```

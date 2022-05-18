@@ -1,15 +1,15 @@
-# Sum All Numbers in a Range
+# Pig Latin
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Pig Latin is a way of altering English Words. The rules are as follows:
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+- If a word begins with a consonant, take the first consonant or consonant cluster, move it to the end of the word, and add ay to it.
+
+- If a word begins with a vowel, just add way at the end.
+
+Translate the provided string to Pig Latin. Input strings are guaranteed to be English words in all lowercase.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
-}
-sumAll([1, 4]);
+
 ```

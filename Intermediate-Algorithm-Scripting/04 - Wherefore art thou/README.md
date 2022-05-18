@@ -1,15 +1,37 @@
-# Sum All Numbers in a Range
+# Wherefore art thou
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Make a function that looks through an array of objects (first argument) and returns an array of all objects that have matching name and value pairs (second argument). Each name and value pair of the source object has to be present in the object from the collection if it is to be included in the returned array.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+For example, if the first argument is [{ first: "Romeo", last: "Montague" }, { first: "Mercutio", last: null }, { first: "Tybalt", last: "Capulet" }], and the second argument is { last: "Capulet" }, then you must return the third object from the array (the first argument), because it contains the name and its value, that was passed on as the second argument.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function whatIsInAName(collection, source) {
+  const arr = [];
+  // Only change code below this line
+
+  const sourceKeys = Object.keys(source);
+  collection = collection
+    .filter((item) =>
+      sourceKeys.every(
+        (key) => item.hasOwnProperty(key) && item[key] == source[key]
+      )
+    )
+    .map((item) => arr.push(item));
+
+  // Only change code above this line
+
+  console.log(arr);
+  return arr;
 }
-sumAll([1, 4]);
+
+whatIsInAName(
+  [
+    { first: "Romeo", last: "Montague" },
+    { first: "Mercutio", last: null },
+    { first: "Tybalt", last: "Capulet" },
+  ],
+  { last: "Capulet" }
+);
 ```

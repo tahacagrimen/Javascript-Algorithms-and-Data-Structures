@@ -1,15 +1,23 @@
-# Sum All Numbers in a Range
+# Binary Agents
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Return an English translated sentence of the passed binary string.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+The binary string will be space separated.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function binaryAgent(str) {
+  str = str.split(" ");
+  str = str
+    .map((item) => parseInt(item, 2))
+    .map((item) => String.fromCharCode(item))
+    .join("");
+
+  return str;
 }
-sumAll([1, 4]);
+
+binaryAgent(
+  "01000001 01110010 01100101 01101110 00100111 01110100 00100000 01100010 01101111 01101110 01100110 01101001 01110010 01100101 01110011 00100000 01100110 01110101 01101110 00100001 00111111"
+);
 ```

@@ -1,15 +1,31 @@
-# Sum All Numbers in a Range
+# Smallest Common Multiple
 
-We'll pass you an array of two numbers. Return the sum of those two numbers plus the sum of all the numbers between them. The lowest number will not always come first.
+Find the smallest common multiple of the provided parameters that can be evenly divided by both, as well as by all sequential numbers in the range between these parameters.
 
-For example, sumAll([4,1]) should return 10 because sum of all the numbers between 1 and 4 (both inclusive) is 10.
+The range will be an array of two numbers that will not necessarily be in numerical order.
+
+For example, if given 1 and 3, find the smallest common multiple of both 1 and 3 that is also evenly divisible by all numbers between 1 and 3. The answer here would be 6.
 
 ### My Solution
 
 ```javascript
-function sumAll(arr) {
-  const [first, last] = [...arr].sort((a, b) => a - b);
-  return first !== last ? first + sumAll([first + 1, last]) : first;
+function smallestCommons(arr) {
+  let end = Math.max(...arr);
+  let start = Math.min(...arr);
+  let array = [];
+  while (start <= end) {
+    array.push(start);
+    start += 1;
+  }
+
+  // The array has done
+  let common = 1;
+  while (common > 0) {
+    array.every((item) => common % item == 0) ? common : (common += 1);
+  }
+  console.log(common);
+  return common;
 }
-sumAll([1, 4]);
+
+smallestCommons([1, 5]);
 ```
