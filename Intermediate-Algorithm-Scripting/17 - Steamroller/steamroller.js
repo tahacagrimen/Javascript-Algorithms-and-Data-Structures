@@ -1,10 +1,3 @@
-# Steamroller
-
-Flatten a nested array. You must account for varying levels of nesting.
-
-### My Solution
-
-```javascript
 function steamrollArray(arr) {
   let newArr = [];
   for (let i = 0; i < arr.length; i++) {
@@ -19,4 +12,3 @@ function steamrollArray(arr) {
 }
 
 steamrollArray([1, [2], [3, [[4]]]]);
-```
