@@ -1,10 +1,3 @@
-# Convert HTML Entities
-
-Convert the characters &, <, >, " (double quote), and ' (apostrophe), in a string to their corresponding HTML entities.
-
-### My Solution
-
-```javascript
 function convertHTML(str) {
   // Use Object Lookup to declare as many HTML entities as needed.
   const htmlEntities = {
@@ -20,4 +13,3 @@ function convertHTML(str) {
 
 // test here
 convertHTML("Dolce & Gabbana");
-```
