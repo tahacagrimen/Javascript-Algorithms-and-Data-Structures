@@ -11,5 +11,13 @@ Translate the provided string to Pig Latin. Input strings are guaranteed to be E
 ### My Solution
 
 ```javascript
+function translatePigLatin(str) {
+  let consonantRegex = /^[^aeiou]+/;
+  let myConsonants = str.match(consonantRegex);
+  return myConsonants !== null
+    ? str.replace(consonantRegex, "").concat(myConsonants).concat("ay")
+    : str.concat("way");
+}
 
+translatePigLatin("consonant");
 ```
